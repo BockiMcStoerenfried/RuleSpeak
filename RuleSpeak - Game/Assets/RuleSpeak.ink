@@ -19,10 +19,10 @@ VAR ybmode = false
 
 Wäs willscht dü spielön?
 
-+ Einfacher Modus #speaker:f #state:loop
++ Einfacher Modus #speaker:Flinta #state:loop
     -> ATTACK_HANDLER 
  
- + Schwerer Modus #speaker:f #state:loop
+ + Schwerer Modus #speaker:Flinta #state:loop
     ~ybmode = true
     -> ATTACK_HANDLER 
     
@@ -42,26 +42,26 @@ Wäs willscht dü spielön?
 
 //says AI-Attack in the Dialogue-Output
 {attack: 
-- 1: Spiegel 'asson disch! #speaker:c
-- 2: Die Schu'e stinkon! #speaker:c
-- 3: Disch polier isch noch!#speaker:c
-- 4: Et voilà la merde!#speaker:c
-- 5: Du Leischtmatrosa!#speaker:c
-- 6: Davy Jones' Kiste wartät! #speaker:c
-- 7: Dein 'olzbein wird varfauart! #speaker:c
-- 8: Du bischt ein raudigar 'und! #speaker:c
-- 9: ubar die Planka mit dir! #speaker:c
-- 10: Tu as un sacré culot! #speaker:c
-- 11: Yo-'o-'o #speaker:c 
-- 12: Yo-'o-'o #speaker:c  
-- 13: Yo-'o-'o #speaker:c 
-- 14: Yo-'o-'o #speaker:c 
-- 15: Yo-'o-'o #speaker:c 
-- 16: und na Budal voll Rum #speaker:c
-- 17: und na Budal voll Rum #speaker:c
-- 18: und na Budal voll Rum #speaker:c
-- 19: und na Budal voll Rum #speaker:c
-- 20: und na Budal voll Rum #speaker:c
+- 1: Spiegel 'asson disch! #speaker:Regina
+- 2: Die Schu'e stinkon! #speaker:Regina
+- 3: Disch polier isch noch!#speaker:Regina
+- 4: Et voilà la merde!#speaker:Regina
+- 5: Du Leischtmatrosa!#speaker:Regina
+- 6: Davy Jones' Kiste wartät! #speaker:Regina
+- 7: Dein 'olzbein wird varfauart! #speaker:Regina
+- 8: Du bischt ein raudigar 'und! #speaker:Regina
+- 9: ubar die Planka mit dir! #speaker:Regina
+- 10: Tu as un sacré culot! #speaker:Regina
+- 11: Yo-'o-'o #speaker:Regina 
+- 12: Yo-'o-'o #speaker:Regina  
+- 13: Yo-'o-'o #speaker:Regina 
+- 14: Yo-'o-'o #speaker:Regina 
+- 15: Yo-'o-'o #speaker:Regina 
+- 16: und na Budal voll Rum #speaker:Regina
+- 17: und na Budal voll Rum #speaker:Regina
+- 18: und na Budal voll Rum #speaker:Regina
+- 19: und na Budal voll Rum #speaker:Regina
+- 20: und na Budal voll Rum #speaker:Regina
 }
 
 //checks if AI-Attack is correct and acts accordingly 
@@ -132,7 +132,7 @@ Wäs willscht dü spielön?
 ~7syl = RANDOM(1,5)
 
 + {5syl == 1} [5 Silben]
-    {Checker()} Beim Klabautermann! #speaker:f
+    {Checker()} Beim Klabautermann! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -141,7 +141,7 @@ Wäs willscht dü spielön?
     }
     
 + {5syl == 2} [5 Silben]
-    {Checker()} Halt's Schandmaul, Sprotte! #speaker:f
+    {Checker()} Halt's Schandmaul, Sprotte! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -150,7 +150,7 @@ Wäs willscht dü spielön?
     }
     
 + {5syl == 3} [5 Silben]
-    {Checker()} Versteck dich lieber! #speaker:f
+    {Checker()} Versteck dich lieber! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -159,7 +159,7 @@ Wäs willscht dü spielön?
     }
     
 + {5syl == 4} [5 Silben]
-    {Checker()} Verflucht sei dein Blut! #speaker:f
+    {Checker()} Verflucht sei dein Blut! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -168,7 +168,7 @@ Wäs willscht dü spielön?
     }
     
 + {5syl == 5} [5 Silben]
-    {Checker()} Das Vieh gehort hinaus! #speaker:f
+    {Checker()} Das Vieh gehort hinaus! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -178,7 +178,7 @@ Wäs willscht dü spielön?
     
     
 + {7syl == 1} [7 Silben]
-    {Checker()} Nimm den Stiefel aus dem Maul! #speaker:f
+    {Checker()} Nimm den Stiefel aus dem Maul! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -187,7 +187,7 @@ Wäs willscht dü spielön?
     }
     
 + {7syl == 2} [7 Silben]
-    {Checker()} Pockiger Bilgenaffe! #speaker:f
+    {Checker()} Pockiger Bilgenaffe! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -196,7 +196,7 @@ Wäs willscht dü spielön?
     }  
     
 + {7syl == 3} [7 Silben]
-    {Checker()} Dich werd ich Kiel holn lassen! #speaker:f
+    {Checker()} Dich werd ich Kiel holn lassen! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -205,7 +205,7 @@ Wäs willscht dü spielön?
     }
     
 + {7syl == 4} [7 Silben]
-    {Checker()} Bist den Kugeln zu schade! #speaker:f
+    {Checker()} Bist den Kugeln zu schade! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -214,7 +214,7 @@ Wäs willscht dü spielön?
     }
     
 + {7syl == 5} [7 Silben]
-    {Checker()} Dei Visage schreckt nicht schlecht! #speaker:f
+    {Checker()} Dei Visage schreckt nicht schlecht! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -222,19 +222,19 @@ Wäs willscht dü spielön?
     - else: -> ROUND_LOST
     }   
     
-+ Yo-ho-ho! #speaker:f
++ Yo-ho-ho! #speaker:Flinta
     {Checker()} 
     {Ycounter == 3: -> ATTACK_HANDLER}
     {Bcounter == 5: -> ROUND_LOST | -> ROUND_LOST}  
 
     
-+ Und ne Budel voll Rum! #speaker:f
++ Und ne Budel voll Rum! #speaker:Flinta
     {Checker()} 
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ATTACK_HANDLER | -> ROUND_LOST}
     
     
-+ Zu langsam! #speaker:c
++ Zu langsam! #speaker:Regina
     -> ROUND_LOST
  
     
@@ -349,7 +349,7 @@ Wäs willscht dü spielön?
 
 === ROUND_WON ===
 
-Haha, das war falsch! #speaker:f
+Haha, das war falsch! #speaker:Flinta
 Musst trinken! 
 
 {rounds_won == 5: -> STOP}
@@ -366,7 +366,7 @@ Jetzt bin ich dran!
 
 === ROUND_LOST ===
 
-Ah oui, du musst trinkon! #speaker:c
+Ah oui, du musst trinkon! #speaker:Regina
 
 {rounds_lost == 5: -> STOP}
 

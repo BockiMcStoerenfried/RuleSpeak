@@ -9,12 +9,15 @@ public class DialogueManager: MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private TMP_Text dialogue;
     [SerializeField] private TMP_Text countdownText;
+    [SerializeField] private TMP_Text nameText;
 
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     [SerializeField] private GameObject choicespanel;
     [SerializeField] private TMP_Text[] choicesText;
+
+    public Animator potraitMover;
 
 
     public bool choicesEnabled = false;
@@ -23,6 +26,7 @@ public class DialogueManager: MonoBehaviour
     public float countdown = 10f;
 
     private Animator buttonPopUp;
+    
     private Story currentStory;
 
     private static DialogueManager instance;
@@ -169,18 +173,6 @@ public class DialogueManager: MonoBehaviour
         
     }
 
-   /* private IEnumerator ButtonAnimation()
-    {
-        buttonPopUp.Play("PopUp 1");
-
-        yield return new WaitForSeconds(1f);
-        buttonPopUp.Play("PopUp 2");
-        yield return new WaitForSeconds(1f);
-        buttonPopUp.Play("PopUp 3");
-        yield return new WaitForSeconds(0.2f);
-        buttonPopUp.Play("PopUp 4");
-        StopCoroutine(ButtonAnimation());
-    } */
 
 
     public void TagHandler(List<string> currentTags)
@@ -196,8 +188,10 @@ public class DialogueManager: MonoBehaviour
             switch (tagKey)
             {
                 case SPEAKER_TAG:
-
-                    break;
+                    nameText.text = tagValue;
+                    potraitMover.Play(tagValue); 
+                       break;
+                    
                 case STATE_TAG:
                     if (tagValue == "loop")
                     {
