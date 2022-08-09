@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Ink.Runtime;
-using System.Collections;
 using TMPro;
 
 public class DialogueManager: MonoBehaviour
@@ -22,8 +23,11 @@ public class DialogueManager: MonoBehaviour
 
     public bool choicesEnabled = false;
     public bool countdownStarted = false;
+    public bool coroutineIsPlaying;
     public bool gameStarted = false;
     public float countdown = 10f;
+
+    private string save;
 
     private Animator buttonPopUp;
     
@@ -70,11 +74,6 @@ public class DialogueManager: MonoBehaviour
 
     public void Update()
     {
-        if (dialogue.text == "")
-        {
-            Debug.Log(dialogue.text);
-            ContinueStory();
-        }
 
         if (countdownStarted == true && gameStarted == true)
         {
@@ -104,23 +103,40 @@ public class DialogueManager: MonoBehaviour
 
     }
 
+
+
+
+
+
     public void ContinueStory()
     {
-        //checks and reacts to them if there are choices or tags + sets animation to default state + continues the current story
-        if (currentStory.canContinue)
+        if (coroutineIsPlaying)
         {
-
-            dialogue.text = currentStory.Continue();
-
-            buttonPopUp.Play("PopUp 0");
-            DisplayChoices();
-            TagHandler(currentStory.currentTags);
-
+            StopAllCoroutines();
+            dialogue.text = save;
+            coroutineIsPlaying = false;
         }
-        else if (!currentStory.canContinue && !choicesEnabled)
+        else 
         {
-            ExitDialogueMode();
+            if (currentStory.canContinue)
+            {
+
+                StartCoroutine(TypeSentence(currentStory.Continue()));
+
+
+                buttonPopUp.Play("PopUp 0");
+                DisplayChoices();
+                TagHandler(currentStory.currentTags);
+
+            }
+            else if (!currentStory.canContinue && !choicesEnabled)
+            {
+                ExitDialogueMode();
+            }
         }
+        
+        
+
     }
 
 
@@ -203,5 +219,23 @@ public class DialogueManager: MonoBehaviour
                     break;
             }
         }
+    }
+
+
+
+    IEnumerator TypeSentence(string lsentence)
+    {
+        save = lsentence;
+        coroutineIsPlaying = true;
+
+        dialogue.text = "";
+
+        foreach (char letter in lsentence.ToCharArray())
+        {
+            dialogue.text += letter;
+            yield return new WaitForSeconds(0.03f);
+        }
+        coroutineIsPlaying = false;
+
     }
 }
