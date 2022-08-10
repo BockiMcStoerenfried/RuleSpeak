@@ -23,6 +23,7 @@ public class DialogueManager: MonoBehaviour
 
     public bool choicesEnabled = false;
     public bool countdownStarted = false;
+    public bool dialogueIsPlaying = false;
     public bool coroutineIsPlaying;
     public bool gameStarted = false;
     public float countdown = 10f;
@@ -90,6 +91,7 @@ public class DialogueManager: MonoBehaviour
 
     public void EnterDialogueMode(TextAsset inkJSON)
     {
+        dialogueIsPlaying = true;
         choicespanel.SetActive(true);
         currentStory = new Story(inkJSON.text);
         ContinueStory();
@@ -100,6 +102,7 @@ public class DialogueManager: MonoBehaviour
     {
 
         dialogue.text = "";
+        dialogueIsPlaying = false;
 
     }
 
