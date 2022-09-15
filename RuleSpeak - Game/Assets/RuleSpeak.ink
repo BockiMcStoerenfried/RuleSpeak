@@ -16,6 +16,8 @@ VAR won = false
 
 VAR ybmode = false
 
+VAR Counter = 0
+
 
 Wäs willscht dü spielön?
 
@@ -31,8 +33,8 @@ Wäs willscht dü spielön?
 
 ~roundCount +=1
 ~winchance +=1
+{YBModeA()}
 
-{ybmode == true: {YBModeA()}}
 
 {roundCount:
 - 4: ~roundCount = 1
@@ -95,10 +97,13 @@ Wäs willscht dü spielön?
 ~return
 
 === function YBModeA() ===
-
+{
+- ybmode == false:
+ ~ return 
+ }
+ 
 ~Ycounter +=1
 ~Bcounter +=1
-
 //resets Counter if they reach a threshold 
 {Ycounter == 3 && Bcounter == 5: {Yreset()}}
 
@@ -116,7 +121,6 @@ Wäs willscht dü spielön?
 {Bcounter:
 -5: {attackB()}
 }
-~return
 
 === function YBModeB() ===
 
@@ -126,7 +130,6 @@ Wäs willscht dü spielön?
 ~return
 
 === CHOICES ===
-
 //chooses a random Attack for the 5syl and 7syl button
 ~5syl = RANDOM(1,5)
 ~7syl = RANDOM(1,5)
@@ -358,6 +361,7 @@ Musst trinken!
 ~Ycounter = 0
 ~Bcounter = 0
 ~roundCount = 0
+~Counter = 0
 
 
 Jetzt bin ich dran!
@@ -374,6 +378,7 @@ Ah oui, du musst trinkon! #speaker:Regina
 ~Ycounter = 0
 ~Bcounter = 0
 ~roundCount = 0
+~Counter = 0
 
 Also, von vorn.
 -> ATTACK_HANDLER
