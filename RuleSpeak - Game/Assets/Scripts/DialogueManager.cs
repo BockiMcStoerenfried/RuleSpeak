@@ -12,7 +12,6 @@ public class DialogueManager: MonoBehaviour
     [SerializeField] private TMP_Text countdownText;
     [SerializeField] private TMP_Text nameText;
 
-
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
     [SerializeField] private GameObject choicespanel;
@@ -27,6 +26,7 @@ public class DialogueManager: MonoBehaviour
     public bool coroutineIsPlaying;
     public bool gameStarted = false;
     public float countdown = 10f;
+
 
     private string save;
 
@@ -75,9 +75,9 @@ public class DialogueManager: MonoBehaviour
 
     public void Update()
     {
-
         if (countdownStarted == true && gameStarted == true)
         {
+            Debug.Log("countdown");
             countdown -= (1 * Time.deltaTime);
             countdownText.text = countdown.ToString("0");
 
@@ -208,8 +208,8 @@ public class DialogueManager: MonoBehaviour
             {
                 case SPEAKER_TAG:
                     nameText.text = tagValue;
-                    potraitMover.Play(tagValue); 
-                       break;
+                    potraitMover.Play(tagValue);
+                    break;
                     
                 case STATE_TAG:
                     if (tagValue == "loop")

@@ -4,6 +4,8 @@ VAR roundCount = 0
 
 VAR Ycounter = 0
 
+VAR turnCounter = 0
+
 VAR 5syl = ""
 VAR 7syl = ""
 
@@ -18,19 +20,20 @@ VAR ybmode = false
 VAR Counter = 0
 
 
-Wäs willscht dü spielön?
+/*Wäs willscht dü spielön?
 
 + Einfacher Modus #speaker:Flinta #state:loop
     -> ATTACK_HANDLER 
  
- + Schwerer Modus #speaker:Flinta #state:loop
+ + Schwerer Modus #speaker:Flinta */ #state:loop 
+ 
     ~ybmode = true
     -> ATTACK_HANDLER 
     
 
 === ATTACK_HANDLER ===
 
-
+~turnCounter +=1
 ~roundCount +=1
 //~winchance +=1
 {YBModeA()}
@@ -91,6 +94,7 @@ roundCount = {roundCount} */
 
 
 {ybmode == true: {YBModeB()}}
+~turnCounter +=1
 ~roundCount += 1
 {Ycounter == 6:     {Counter1(Ycounter)}}
 {roundCount == 4:   {Counter1(roundCount)}}
@@ -240,6 +244,7 @@ Ah oui, du musst trinkon! #speaker:Regina
 
 {rounds_lost == 5: -> STOP}
 
+~turnCounter = 0
 ~rounds_lost += 1
 ~Ycounter = 0
 ~roundCount = 0
@@ -257,6 +262,7 @@ Musst trinken!
 
 {rounds_won == 5: -> STOP}
 
+~turnCounter = 0
 ~rounds_won += 1
 ~Ycounter = 0
 ~roundCount = 0
