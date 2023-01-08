@@ -30,7 +30,6 @@ Wäs willscht dü spielön?
     
 
 === ATTACK_HANDLER ===
-
 {Ycounter == 3 && Bcounter == 5: {Yreset()}} 
 ~roundCount +=1
 //~winchance +=1
@@ -82,15 +81,6 @@ Wäs willscht dü spielön?
 
 
 
-
-
-
-
-
-
-
-
-
 === CHOICES ===
 //chooses a random Attack for the 5syl and 7syl button
 
@@ -101,16 +91,12 @@ Wäs willscht dü spielön?
 {Bcounter == 6:     {Counter1(Bcounter)}}
 {roundCount == 4:   {Counter1(roundCount)}}
 
-Bcounter: {Bcounter}
-Ycounter: {Ycounter}
-roundCount: {roundCount}
-winchance: {winchance}
 
 ~5syl = RANDOM(1,5)
 ~7syl = RANDOM(1,5)
 
 + {5syl == 1} [5 Silben]
-    {Checker()} Beim Klabautermann! #speaker:Flinta
+    Beim Klabautermann! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -119,7 +105,7 @@ winchance: {winchance}
     }
     
 + {5syl == 2} [5 Silben]
-    {Checker()} Halt's Schandmaul, Sprotte! #speaker:Flinta
+    Halt's Schandmaul, Sprotte! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -128,7 +114,7 @@ winchance: {winchance}
     }
     
 + {5syl == 3} [5 Silben]
-    {Checker()} Versteck dich lieber! #speaker:Flinta
+    Versteck dich lieber! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -137,7 +123,7 @@ winchance: {winchance}
     }
     
 + {5syl == 4} [5 Silben]
-    {Checker()} Verflucht sei dein Blut! #speaker:Flinta
+    Verflucht sei dein Blut! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -146,7 +132,7 @@ winchance: {winchance}
     }
     
 + {5syl == 5} [5 Silben]
-    {Checker()} Das Vieh gehort hinaus! #speaker:Flinta
+    Das Vieh gehort hinaus! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -156,7 +142,7 @@ winchance: {winchance}
     
     
 + {7syl == 1} [7 Silben]
-    {Checker()} Nimm den Stiefel aus dem Maul! #speaker:Flinta
+    Nimm den Stiefel aus dem Maul! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -165,7 +151,7 @@ winchance: {winchance}
     }
     
 + {7syl == 2} [7 Silben]
-    {Checker()} Pockiger Bilgenaffe! #speaker:Flinta
+    Pockiger Bilgenaffe! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -174,7 +160,7 @@ winchance: {winchance}
     }  
     
 + {7syl == 3} [7 Silben]
-    {Checker()} Dich werd ich Kiel holn lassen! #speaker:Flinta
+    Dich werd ich Kiel holn lassen! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -183,7 +169,7 @@ winchance: {winchance}
     }
     
 + {7syl == 4} [7 Silben]
-    {Checker()} Bist den Kugeln zu schade! #speaker:Flinta
+    Bist den Kugeln zu schade! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -192,7 +178,7 @@ winchance: {winchance}
     }
     
 + {7syl == 5} [7 Silben]
-    {Checker()} Dei Visage schreckt nicht schlecht! #speaker:Flinta
+    Dei Visage schreckt nicht schlecht! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
     {Bcounter == 5: -> ROUND_LOST}
     {roundCount:
@@ -200,16 +186,21 @@ winchance: {winchance}
     - else: -> ROUND_LOST
     }   
     
-+ Yo-ho-ho! #speaker:Flinta
-    {Checker()} 
-    {Ycounter == 3: -> ATTACK_HANDLER}
++ [Yo-ho-ho!]
+    Yo-ho-ho! #speaker:Flinta
+    {Ycounter:
+    -3: -> ATTACK_HANDLER
+    }
     {Bcounter == 5: -> ROUND_LOST | -> ROUND_LOST}  
 
     
-+ Und ne Budel voll Rum! #speaker:Flinta
-    {Checker()} 
++ [Und ne Budel voll Rum!]
+    Und ne Budel voll Rum! #speaker:Flinta
     {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ATTACK_HANDLER | -> ROUND_LOST}
+    {Bcounter:
+    -5:     -> ATTACK_HANDLER 
+    -else:  -> ROUND_LOST
+    }
     
     
 + Zu langsam! #speaker:Regina
@@ -262,12 +253,6 @@ Also, von vorn.
 
 
 
-
-
-=== function Checker() ===
-
-
-~return
 
 
 
