@@ -1,5 +1,5 @@
 VAR attack = 0
-VAR winchance = 0
+VAR winchance = 1
 VAR roundCount = 0
 
 VAR Ycounter = 0
@@ -31,14 +31,15 @@ Wäs willscht dü spielön?
 
 === ATTACK_HANDLER ===
 
+{Ycounter == 3 && Bcounter == 5: {Yreset()}} 
 ~roundCount +=1
-~winchance +=1
+//~winchance +=1
 {YBModeA()}
-
 
 {roundCount:
 - 4: ~roundCount = 1
 }
+
 
 {attack0()}
 
@@ -77,60 +78,34 @@ Wäs willscht dü spielön?
 {won == true: -> CHOICES| -> ROUND_WON}
 
 
-=== function Counter1(ref x) ===
-
-~x = 1
-~return
-
-=== function Checker() ===
-
-{ybmode == true: {YBModeB()}}
-
-~roundCount += 1
 
 
-{Ycounter == 3 && Bcounter == 5: {Yreset()}} 
 
-{Ycounter == 4:     {Counter1(Ycounter)}}
-{Bcounter == 5:     {Counter1(Bcounter)}}
-{roundCount == 4:   {Counter1(roundCount)}}
-~return
 
-=== function YBModeA() ===
-{
-- ybmode == false:
- ~ return 
- }
- 
-~Ycounter +=1
-~Bcounter +=1
-//resets Counter if they reach a threshold 
-{Ycounter == 3 && Bcounter == 5: {Yreset()}}
 
-{Ycounter:
-- 4: ~Ycounter = 1
-}
-{Bcounter:
--6: ~Bcounter = 1
-}
 
-//sets AI-Attack according to the current Round and winchance 
-{Ycounter:
--3: {attackY()}
-}
-{Bcounter:
--5: {attackB()}
-}
 
-=== function YBModeB() ===
 
-~Ycounter   += 1
-~Bcounter   += 1
 
-~return
+
+
+
 
 === CHOICES ===
 //chooses a random Attack for the 5syl and 7syl button
+
+
+{ybmode == true: {YBModeB()}}
+~roundCount += 1
+{Ycounter == 4:     {Counter1(Ycounter)}}
+{Bcounter == 6:     {Counter1(Bcounter)}}
+{roundCount == 4:   {Counter1(roundCount)}}
+
+Bcounter: {Bcounter}
+Ycounter: {Ycounter}
+roundCount: {roundCount}
+winchance: {winchance}
+
 ~5syl = RANDOM(1,5)
 ~7syl = RANDOM(1,5)
 
@@ -239,6 +214,117 @@ Wäs willscht dü spielön?
     
 + Zu langsam! #speaker:Regina
     -> ROUND_LOST
+ 
+ 
+=== ROUND_LOST ===
+
+Ah oui, du musst trinkon! #speaker:Regina
+
+{rounds_lost == 5: -> STOP}
+
+~rounds_lost += 1
+~Ycounter = 0
+~Bcounter = 0
+~roundCount = 0
+~Counter = 0
+
+Also, von vorn.
+
+
+
+-> ATTACK_HANDLER
+
+
+=== STOP ===
+
+{rounds_won == 5: gewonnen! | verloren!}
+
+->END
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+=== function Counter1(ref x) ===
+
+~x = 1
+~return
+
+
+
+
+
+=== function Checker() ===
+
+
+~return
+
+
+
+
+
+=== function YBModeA() ===
+{
+- ybmode == false:
+ ~ return 
+ }
+ 
+~Ycounter +=1
+~Bcounter +=1
+//resets Counter if they reach a threshold 
+{Ycounter == 3 && Bcounter == 5: {Yreset()}}
+
+{Ycounter:
+- 4: ~Ycounter = 1
+}
+{Bcounter:
+-6: ~Bcounter = 1
+}
+
+//sets AI-Attack according to the current Round and winchance 
+{Ycounter:
+-3: {attackY()}
+}
+{Bcounter:
+-5: {attackB()}
+}
+
+
+
+
+
+=== function YBModeB() ===
+
+~Ycounter   += 1
+~Bcounter   += 1
+
+~return
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
  
     
 === function attack0() ===
@@ -368,24 +454,4 @@ Jetzt bin ich dran!
 -> CHOICES
 
 
-=== ROUND_LOST ===
 
-Ah oui, du musst trinkon! #speaker:Regina
-
-{rounds_lost == 5: -> STOP}
-
-~rounds_lost += 1
-~Ycounter = 0
-~Bcounter = 0
-~roundCount = 0
-~Counter = 0
-
-Also, von vorn.
--> ATTACK_HANDLER
-
-
-=== STOP ===
-
-{rounds_won == 5: gewonnen! | verloren!}
-
-->END
