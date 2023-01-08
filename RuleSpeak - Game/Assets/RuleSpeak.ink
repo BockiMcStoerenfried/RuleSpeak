@@ -3,7 +3,6 @@ VAR winchance = 1
 VAR roundCount = 0
 
 VAR Ycounter = 0
-VAR Bcounter = 0
 
 VAR 5syl = ""
 VAR 7syl = ""
@@ -30,7 +29,8 @@ Wäs willscht dü spielön?
     
 
 === ATTACK_HANDLER ===
-{Ycounter == 3 && Bcounter == 5: {Yreset()}} 
+
+
 ~roundCount +=1
 //~winchance +=1
 {YBModeA()}
@@ -38,6 +38,10 @@ Wäs willscht dü spielön?
 {roundCount:
 - 4: ~roundCount = 1
 }
+
+/*Reginas Zug
+Ycounter = {Ycounter} 
+roundCount = {roundCount} */
 
 
 {attack0()}
@@ -68,12 +72,12 @@ Wäs willscht dü spielön?
 
 //checks if AI-Attack is correct and acts accordingly 
 {Ycounter:
--3: {Ycheck()}
+-3: {Y3check()}
 }
-{Bcounter:
--5: {Bcheck()}
+{Ycounter:
+-5: {Y5check()}
 }
-{Ycounter != 3 && Bcounter !=5:{Ncheck()}}
+{Ycounter != 3 && Ycounter !=5:{Ncheck()}}
 {won == true: -> CHOICES| -> ROUND_WON}
 
 
@@ -85,11 +89,15 @@ Wäs willscht dü spielön?
 //chooses a random Attack for the 5syl and 7syl button
 
 
+
 {ybmode == true: {YBModeB()}}
 ~roundCount += 1
-{Ycounter == 4:     {Counter1(Ycounter)}}
-{Bcounter == 6:     {Counter1(Bcounter)}}
+{Ycounter == 6:     {Counter1(Ycounter)}}
 {roundCount == 4:   {Counter1(roundCount)}}
+
+//Flintas Zug
+//Ycounter = {Ycounter}
+//roundCount = {roundCount}
 
 
 ~5syl = RANDOM(1,5)
@@ -97,8 +105,10 @@ Wäs willscht dü spielön?
 
 + {5syl == 1} [5 Silben]
     Beim Klabautermann! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
@@ -106,8 +116,10 @@ Wäs willscht dü spielön?
     
 + {5syl == 2} [5 Silben]
     Halt's Schandmaul, Sprotte! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
@@ -115,8 +127,10 @@ Wäs willscht dü spielön?
     
 + {5syl == 3} [5 Silben]
     Versteck dich lieber! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
@@ -124,8 +138,10 @@ Wäs willscht dü spielön?
     
 + {5syl == 4} [5 Silben]
     Verflucht sei dein Blut! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
@@ -133,8 +149,10 @@ Wäs willscht dü spielön?
     
 + {5syl == 5} [5 Silben]
     Das Vieh gehort hinaus! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
@@ -143,8 +161,10 @@ Wäs willscht dü spielön?
     
 + {7syl == 1} [7 Silben]
     Nimm den Stiefel aus dem Maul! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ATTACK_HANDLER
     - else: -> ROUND_LOST
@@ -152,8 +172,10 @@ Wäs willscht dü spielön?
     
 + {7syl == 2} [7 Silben]
     Pockiger Bilgenaffe! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ATTACK_HANDLER
     - else: -> ROUND_LOST
@@ -161,8 +183,10 @@ Wäs willscht dü spielön?
     
 + {7syl == 3} [7 Silben]
     Dich werd ich Kiel holn lassen! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ATTACK_HANDLER
     - else: -> ROUND_LOST
@@ -170,8 +194,10 @@ Wäs willscht dü spielön?
     
 + {7syl == 4} [7 Silben]
     Bist den Kugeln zu schade! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ATTACK_HANDLER
     - else: -> ROUND_LOST
@@ -179,8 +205,10 @@ Wäs willscht dü spielön?
     
 + {7syl == 5} [7 Silben]
     Dei Visage schreckt nicht schlecht! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter == 5: -> ROUND_LOST}
+    {Ycounter:
+    -3: -> ROUND_LOST
+    -5: -> ROUND_LOST
+    }
     {roundCount:
     -2: -> ATTACK_HANDLER
     - else: -> ROUND_LOST
@@ -190,14 +218,13 @@ Wäs willscht dü spielön?
     Yo-ho-ho! #speaker:Flinta
     {Ycounter:
     -3: -> ATTACK_HANDLER
+    -else: -> ROUND_LOST
     }
-    {Bcounter == 5: -> ROUND_LOST | -> ROUND_LOST}  
 
     
 + [Und ne Budel voll Rum!]
     Und ne Budel voll Rum! #speaker:Flinta
-    {Ycounter == 3: -> ROUND_LOST}
-    {Bcounter:
+    {Ycounter:
     -5:     -> ATTACK_HANDLER 
     -else:  -> ROUND_LOST
     }
@@ -215,15 +242,29 @@ Ah oui, du musst trinkon! #speaker:Regina
 
 ~rounds_lost += 1
 ~Ycounter = 0
-~Bcounter = 0
 ~roundCount = 0
 ~Counter = 0
 
 Also, von vorn.
 
-
-
 -> ATTACK_HANDLER
+
+
+=== ROUND_WON ===
+
+Haha, das war falsch! #speaker:Flinta
+Musst trinken! 
+
+{rounds_won == 5: -> STOP}
+
+~rounds_won += 1
+~Ycounter = 0
+~roundCount = 0
+~Counter = 0
+
+
+Jetzt bin ich dran!
+-> CHOICES
 
 
 === STOP ===
@@ -265,33 +306,23 @@ Also, von vorn.
  }
  
 ~Ycounter +=1
-~Bcounter +=1
 //resets Counter if they reach a threshold 
-{Ycounter == 3 && Bcounter == 5: {Yreset()}}
 
 {Ycounter:
-- 4: ~Ycounter = 1
-}
-{Bcounter:
--6: ~Bcounter = 1
+-6: ~Ycounter = 1
 }
 
 //sets AI-Attack according to the current Round and winchance 
 {Ycounter:
 -3: {attackY()}
-}
-{Bcounter:
 -5: {attackB()}
 }
-
-
 
 
 
 === function YBModeB() ===
 
 ~Ycounter   += 1
-~Bcounter   += 1
 
 ~return
     
@@ -314,8 +345,8 @@ Also, von vorn.
     
 === function attack0() ===
 
-{Ycounter != 3 && Bcounter !=5 && roundCount == 2: {attack2()}}
-{Ycounter != 3 && Bcounter !=5 && roundCount != 2: {attack1()}}
+{Ycounter != 3 && Ycounter !=5 && roundCount == 2: {attack2()}}
+{Ycounter != 3 && Ycounter !=5 && roundCount != 2: {attack1()}}
 
 
 //attack functions of AI-Attack
@@ -387,7 +418,7 @@ Also, von vorn.
 ~return
 
 
-=== function Ycheck() ===
+=== function Y3check() ===
 
 {attack:
 - 11:   ~won = true
@@ -400,7 +431,7 @@ Also, von vorn.
 ~return
 
 
-=== function Bcheck() ===
+=== function Y5check() ===
 
 {attack:
 - 16:   ~won = true
@@ -413,30 +444,7 @@ Also, von vorn.
 ~return
 
 
-//resets Y and B counter if they re both at their max
-=== function Yreset() ===
 
-~Ycounter = 0
-~Bcounter = 0
-~return
-
-
-=== ROUND_WON ===
-
-Haha, das war falsch! #speaker:Flinta
-Musst trinken! 
-
-{rounds_won == 5: -> STOP}
-
-~rounds_won += 1
-~Ycounter = 0
-~Bcounter = 0
-~roundCount = 0
-~Counter = 0
-
-
-Jetzt bin ich dran!
--> CHOICES
 
 
 
