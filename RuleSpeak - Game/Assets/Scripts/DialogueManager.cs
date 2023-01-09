@@ -28,8 +28,8 @@ public class DialogueManager: MonoBehaviour
     public bool gameStarted = false;
     public float countdown = 10f;
 
-    private Vector3 dialogueVectorF = new Vector3(305, 370, 0);
-    private Vector3 dialogueVectorR = new Vector3(570, 370, 0);
+    private Vector3 dialogueVectorF = new Vector3(300, 210, 0);
+    private Vector3 dialogueVectorR = new Vector3(370, 210, 0);
     private string save;
 
     private Animator buttonPopUp;
@@ -210,14 +210,14 @@ public class DialogueManager: MonoBehaviour
             {
                 case SPEAKER_TAG:
 
-                    if (tagValue == "Regina")
+                   if (tagValue == "Regina")
                     {
                         dialogue.transform.SetPositionAndRotation(dialogueVectorR, Quaternion.identity);                     
                     }
                     else if (tagValue == "Flinta")
                     {
                         dialogue.transform.SetPositionAndRotation(dialogueVectorF, Quaternion.identity);
-                    }
+                    } 
 
 
                     nameText.text = tagValue;
