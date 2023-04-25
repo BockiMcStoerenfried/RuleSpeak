@@ -6,7 +6,7 @@ VAR Ycounter = 0
 
 VAR turnCounter = 0
 
-VAR 5syl = ""
+VAR 6syl = ""
 VAR 7syl = ""
 
 
@@ -37,6 +37,7 @@ VAR Counter = 0
 ~roundCount +=1
 //~winchance +=1
 {YBModeA()}
+Runde: {turnCounter}
 
 {roundCount:
 - 4: ~roundCount = 1
@@ -55,7 +56,7 @@ roundCount = {roundCount} */
 - 2: Die Schu'e stinkon! #speaker:Regina
 - 3: Disch polier isch noch!#speaker:Regina
 - 4: Et voilà la merde!#speaker:Regina
-- 5: Du Leischtmatrosa!#speaker:Regina
+- 6: Du Leischtmatrosa!#speaker:Regina
 - 6: Davy Jones' Kiste wartät! #speaker:Regina
 - 7: Dein 'olzbein wird varfauart! #speaker:Regina
 - 8: Du bischt ein raudigar 'und! #speaker:Regina
@@ -65,7 +66,7 @@ roundCount = {roundCount} */
 - 12: Yo-'o-'o #speaker:Regina  
 - 13: Yo-'o-'o #speaker:Regina 
 - 14: Yo-'o-'o #speaker:Regina 
-- 15: Yo-'o-'o #speaker:Regina 
+- 16: Yo-'o-'o #speaker:Regina 
 - 16: und na Budal voll Rum #speaker:Regina
 - 17: und na Budal voll Rum #speaker:Regina
 - 18: und na Budal voll Rum #speaker:Regina
@@ -78,9 +79,9 @@ roundCount = {roundCount} */
 -3: {Y3check()}
 }
 {Ycounter:
--5: {Y5check()}
+-6: {Y6check()}
 }
-{Ycounter != 3 && Ycounter !=5:{Ncheck()}}
+{Ycounter != 3 && Ycounter !=6:{Ncheck()}}
 {won == true: -> CHOICES| -> ROUND_WON}
 
 
@@ -89,14 +90,14 @@ roundCount = {roundCount} */
 
 
 === CHOICES ===
-//chooses a random Attack for the 5syl and 7syl button
+//chooses a random Attack for the 6syl and 7syl button
 
 
 
 {ybmode == true: {YBModeB()}}
 ~turnCounter +=1
 ~roundCount += 1
-{Ycounter == 6:     {Counter1(Ycounter)}}
+{Ycounter == 7:     {Counter1(Ycounter)}}
 {roundCount == 4:   {Counter1(roundCount)}}
 
 //Flintas Zug
@@ -104,58 +105,58 @@ roundCount = {roundCount} */
 //roundCount = {roundCount}
 
 
-~5syl = RANDOM(1,5)
-~7syl = RANDOM(1,5)
-
-+ {5syl == 1} [5 Silben]
+~6syl = RANDOM(1,6)
+~7syl = RANDOM(1,6)
+Runde: {turnCounter}
++ {6syl == 1} [5 Silben]
     Beim Klabautermann! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -7: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
     }
     
-+ {5syl == 2} [5 Silben]
++ {6syl == 2} [5 Silben]
     Halt's Schandmaul, Sprotte! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
     }
     
-+ {5syl == 3} [5 Silben]
++ {7syl == 3} [5 Silben]
     Versteck dich lieber! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
     }
     
-+ {5syl == 4} [5 Silben]
++ {6syl == 4} [5 Silben]
     Verflucht sei dein Blut! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
     - else: -> ATTACK_HANDLER
     }
     
-+ {5syl == 5} [5 Silben]
++ {6syl == 6} [5 Silben]
     Das Vieh gehort hinaus! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
@@ -167,7 +168,7 @@ roundCount = {roundCount} */
     Nimm den Stiefel aus dem Maul! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -178,7 +179,7 @@ roundCount = {roundCount} */
     Pockiger Bilgenaffe! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -189,7 +190,7 @@ roundCount = {roundCount} */
     Dich werd ich Kiel holn lassen! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -200,18 +201,18 @@ roundCount = {roundCount} */
     Bist den Kugeln zu schade! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
     - else: -> ROUND_LOST
     }
     
-+ {7syl == 5} [7 Silben]
++ {7syl == 6} [7 Silben]
     Dei Visage schreckt nicht schlecht! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -229,7 +230,7 @@ roundCount = {roundCount} */
 + [Und ne Budel voll Rum!]
     Und ne Budel voll Rum! #speaker:Flinta
     {Ycounter:
-    -5:     -> ATTACK_HANDLER 
+    -6:     -> ATTACK_HANDLER 
     -else:  -> ROUND_LOST
     }
     
@@ -321,7 +322,7 @@ Jetzt bin ich dran!
 //sets AI-Attack according to the current Round and winchance 
 {Ycounter:
 -3: {attackY()}
--5: {attackB()}
+-6: {attackB()}
 }
 
 
@@ -351,15 +352,15 @@ Jetzt bin ich dran!
     
 === function attack0() ===
 
-{Ycounter != 3 && Ycounter !=5 && roundCount == 2: {attack2()}}
-{Ycounter != 3 && Ycounter !=5 && roundCount != 2: {attack1()}}
+{Ycounter != 3 && Ycounter !=6 && roundCount == 2: {attack2()}}
+{Ycounter != 3 && Ycounter !=6 && roundCount != 2: {attack1()}}
 
 
 //attack functions of AI-Attack
 === function attack1() ===
 
 {winchance:
--1:     ~attack = RANDOM(1,5)
+-1:     ~attack = RANDOM(1,6)
 -2:     ~attack = RANDOM(1,6)
 -else:  ~attack = RANDOM(1,7)
 }
@@ -370,7 +371,7 @@ Jetzt bin ich dran!
 
 {winchance:
 -1:     ~attack = RANDOM(6,10)
--2:     ~attack = RANDOM(5,10)
+-2:     ~attack = RANDOM(6,10)
 -else:  ~attack = RANDOM(4,10)
 }
 ~return
@@ -384,7 +385,7 @@ Jetzt bin ich dran!
 
 === function attackB() ===
 
-~attack = RANDOM(15,20)
+~attack = RANDOM(16,20)
 ~return
 
 
@@ -393,19 +394,19 @@ Jetzt bin ich dran!
 
 {roundCount:
 - 2:    {N7check()}
--else:  {N5check()}
+-else:  {N6check()}
 }
 ~return
 
 
-=== function N5check() ===
+=== function N6check() ===
 
 {attack:
 - 1:    ~won = true
 - 2:    ~won = true
 - 3:    ~won = true
 - 4:    ~won = true
-- 5:    ~won = true
+- 6:    ~won = true
 - else: ~won = false
 }
 ~return
@@ -431,13 +432,13 @@ Jetzt bin ich dran!
 - 12:   ~won = true
 - 13:   ~won = true
 - 14:   ~won = true
-- 15:   ~won = true
+- 16:   ~won = true
 - else: ~won = false
 }
 ~return
 
 
-=== function Y5check() ===
+=== function Y6check() ===
 
 {attack:
 - 16:   ~won = true
