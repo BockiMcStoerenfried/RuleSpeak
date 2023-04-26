@@ -6,7 +6,7 @@ VAR Ycounter = 0
 
 VAR turnCounter = 0
 
-VAR 6syl = ""
+VAR 5syl = ""
 VAR 7syl = ""
 
 
@@ -90,7 +90,7 @@ roundCount = {roundCount} */
 
 
 === CHOICES ===
-//chooses a random Attack for the 6syl and 7syl button
+//chooses a random Attack for the 5syl and 7syl button
 
 
 
@@ -105,10 +105,12 @@ roundCount = {roundCount} */
 //roundCount = {roundCount}
 
 
-~6syl = RANDOM(1,6)
+~5syl = RANDOM(1,6)
 ~7syl = RANDOM(1,6)
-Runde: {turnCounter}
-+ {6syl == 1} [5 Silben]
+//Runde: {turnCounter}
+
+
++ {5syl == 1} [5 Silben]
     Beim Klabautermann! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
@@ -119,7 +121,7 @@ Runde: {turnCounter}
     - else: -> ATTACK_HANDLER
     }
     
-+ {6syl == 2} [5 Silben]
++ {5syl == 2} [5 Silben]
     Halt's Schandmaul, Sprotte! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
@@ -141,7 +143,7 @@ Runde: {turnCounter}
     - else: -> ATTACK_HANDLER
     }
     
-+ {6syl == 4} [5 Silben]
++ {5syl == 4} [5 Silben]
     Verflucht sei dein Blut! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
@@ -152,7 +154,7 @@ Runde: {turnCounter}
     - else: -> ATTACK_HANDLER
     }
     
-+ {6syl == 6} [5 Silben]
++ {5syl == 6} [5 Silben]
     Das Vieh gehort hinaus! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
