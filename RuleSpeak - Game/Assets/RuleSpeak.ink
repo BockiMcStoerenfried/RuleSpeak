@@ -78,9 +78,9 @@ roundCount = {roundCount} */
 -3: {Y3check()}
 }
 {Ycounter:
--5: {Y5check()}
+-6: {Y6check()}
 }
-{Ycounter != 3 && Ycounter !=5:{Ncheck()}}
+{Ycounter != 3 && Ycounter !=6:{Ncheck()}}
 {won == true: -> CHOICES| -> ROUND_WON}
 
 
@@ -96,7 +96,7 @@ roundCount = {roundCount} */
 {ybmode == true: {YBModeB()}}
 ~turnCounter +=1
 ~roundCount += 1
-{Ycounter == 6:     {Counter1(Ycounter)}}
+{Ycounter == 7:     {Counter1(Ycounter)}}
 {roundCount == 4:   {Counter1(roundCount)}}
 
 //Flintas Zug
@@ -111,7 +111,7 @@ roundCount = {roundCount} */
     Beim Klabautermann! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
@@ -122,7 +122,7 @@ roundCount = {roundCount} */
     Halt's Schandmaul, Sprotte! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
@@ -133,7 +133,7 @@ roundCount = {roundCount} */
     Versteck dich lieber! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
@@ -144,7 +144,7 @@ roundCount = {roundCount} */
     Verflucht sei dein Blut! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
@@ -155,7 +155,7 @@ roundCount = {roundCount} */
     Das Vieh gehort hinaus! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ROUND_LOST
@@ -167,7 +167,7 @@ roundCount = {roundCount} */
     Nimm den Stiefel aus dem Maul! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -178,7 +178,7 @@ roundCount = {roundCount} */
     Pockiger Bilgenaffe! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -189,7 +189,7 @@ roundCount = {roundCount} */
     Dich werd ich Kiel holn lassen! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -200,7 +200,7 @@ roundCount = {roundCount} */
     Bist den Kugeln zu schade! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -211,7 +211,7 @@ roundCount = {roundCount} */
     Dei Visage schreckt nicht schlecht! #speaker:Flinta
     {Ycounter:
     -3: -> ROUND_LOST
-    -5: -> ROUND_LOST
+    -6: -> ROUND_LOST
     }
     {roundCount:
     -2: -> ATTACK_HANDLER
@@ -315,13 +315,13 @@ Jetzt bin ich dran!
 //resets Counter if they reach a threshold 
 
 {Ycounter:
--6: ~Ycounter = 1
+-7: ~Ycounter = 1
 }
 
 //sets AI-Attack according to the current Round and winchance 
 {Ycounter:
 -3: {attackY()}
--5: {attackB()}
+-6: {attackB()}
 }
 
 
@@ -351,8 +351,8 @@ Jetzt bin ich dran!
     
 === function attack0() ===
 
-{Ycounter != 3 && Ycounter !=5 && roundCount == 2: {attack2()}}
-{Ycounter != 3 && Ycounter !=5 && roundCount != 2: {attack1()}}
+{Ycounter != 3 && Ycounter !=6 && roundCount == 2: {attack2()}}
+{Ycounter != 3 && Ycounter !=6 && roundCount != 2: {attack1()}}
 
 
 //attack functions of AI-Attack
@@ -437,7 +437,7 @@ Jetzt bin ich dran!
 ~return
 
 
-=== function Y5check() ===
+=== function Y6check() ===
 
 {attack:
 - 16:   ~won = true
